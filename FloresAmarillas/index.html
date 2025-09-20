@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores Amarillas - Día Especial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Panel de Personalización -->
+    <div class="editor-panel" id="editorPanel">
+        <div class="editor-header">
+            <h3>🌻 Personaliza tu Mensaje</h3>
+            <button class="toggle-editor" onclick="toggleEditor()">✕</button>
+        </div>
+        
+        <div class="editor-content">
+            <div class="input-group">
+                <label for="recipientName">Nombre del Destinatario:</label>
+                <input type="text" id="recipientName" placeholder="Ej: María" onchange="updateContent()">
+            </div>
+            
+            <div class="input-group">
+                <label for="senderName">Tu Nombre:</label>
+                <input type="text" id="senderName" placeholder="Ej: Juan" onchange="updateContent()">
+            </div>
+            
+            <div class="input-group">
+                <label for="mainMessage">Mensaje Principal:</label>
+                <textarea id="mainMessage" placeholder="Feliz día de las flores amarillas" onchange="updateContent()"></textarea>
+            </div>
+            
+            <div class="input-group">
+                <label for="secondMessage">Mensaje Secundario:</label>
+                <textarea id="secondMessage" placeholder="Que este día esté lleno de alegría como estas flores" onchange="updateContent()"></textarea>
+            </div>
+            
+            <div class="input-group">
+                <label for="colorTheme">Tema de Color:</label>
+                <select id="colorTheme" onchange="changeTheme()">
+                    <option value="classic">Amarillo Clásico</option>
+                    <option value="sunset">Atardecer</option>
+                    <option value="golden">Dorado Real</option>
+                    <option value="spring">Primavera</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="flowerCount">Cantidad de Flores:</label>
+                <input type="range" id="flowerCount" min="20" max="100" value="50" onchange="updateFlowers()">
+                <span id="flowerCountValue">50</span>
+            </div>
+            
+            <button class="export-btn" onclick="exportCSS()">📥 Descargar CSS</button>
+            <button class="reset-btn" onclick="resetToDefault()">🔄 Resetear</button>
+        </div>
+    </div>
+    
+    <!-- Botón para mostrar editor -->
+    <button class="show-editor-btn" id="showEditorBtn" onclick="toggleEditor()">
+        ✏️ Personalizar
+    </button>
+
+    <!-- Contenido Principal -->
+    <div class="container">
+        <!-- Flores de fondo animadas -->
+        <div class="flowers-background" id="flowersBackground"></div>
+        
+        <!-- Contenido central -->
+        <div class="main-content">
+            <div class="greeting">
+                <h1 class="recipient-name" id="displayRecipientName">Querida Persona Especial</h1>
+                <div class="date-badge">21 de Septiembre</div>
+            </div>
+            
+            <div class="message-container">
+                <h2 class="main-message" id="displayMainMessage">¡Feliz Día de las Flores Amarillas! 🌻</h2>
+                <p class="secondary-message" id="displaySecondMessage">
+                    Que este día especial traiga a tu vida la misma alegría y calidez 
+                    que estas hermosas flores amarillas representan.
+                </p>
+                
+                <div class="sunflower-container">
+                    <div class="sunflower">
+                        <!-- Pétalos externos -->
+                        <div class="petals-layer outer-petals">
+                            <div class="petal petal-1"></div>
+                            <div class="petal petal-2"></div>
+                            <div class="petal petal-3"></div>
+                            <div class="petal petal-4"></div>
+                            <div class="petal petal-5"></div>
+                            <div class="petal petal-6"></div>
+                            <div class="petal petal-7"></div>
+                            <div class="petal petal-8"></div>
+                            <div class="petal petal-9"></div>
+                            <div class="petal petal-10"></div>
+                            <div class="petal petal-11"></div>
+                            <div class="petal petal-12"></div>
+                            <div class="petal petal-13"></div>
+                            <div class="petal petal-14"></div>
+                            <div class="petal petal-15"></div>
+                            <div class="petal petal-16"></div>
+                            <div class="petal petal-17"></div>
+                            <div class="petal petal-18"></div>
+                            <div class="petal petal-19"></div>
+                            <div class="petal petal-20"></div>
+                        </div>
+                        
+                        <!-- Pétalos internos -->
+                        <div class="petals-layer inner-petals">
+                            <div class="petal petal-1"></div>
+                            <div class="petal petal-2"></div>
+                            <div class="petal petal-3"></div>
+                            <div class="petal petal-4"></div>
+                            <div class="petal petal-5"></div>
+                            <div class="petal petal-6"></div>
+                            <div class="petal petal-7"></div>
+                            <div class="petal petal-8"></div>
+                            <div class="petal petal-9"></div>
+                            <div class="petal petal-10"></div>
+                            <div class="petal petal-11"></div>
+                            <div class="petal petal-12"></div>
+                            <div class="petal petal-13"></div>
+                            <div class="petal petal-14"></div>
+                            <div class="petal petal-15"></div>
+                            <div class="petal petal-16"></div>
+                        </div>
+                        
+                        <!-- Centro de la flor -->
+                        <div class="center">
+                            <div class="seeds-pattern">
+                                <div class="seed-ring ring-1">
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                </div>
+                                <div class="seed-ring ring-2">
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                </div>
+                                <div class="seed-ring ring-3">
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Flores pequeñas decorativas -->
+                    <div class="small-sunflower small-flower-1">
+                        <div class="small-petals-layer">
+                            <div class="small-petal" style="--rotation: 0deg;"></div>
+                            <div class="small-petal" style="--rotation: 45deg;"></div>
+                            <div class="small-petal" style="--rotation: 90deg;"></div>
+                            <div class="small-petal" style="--rotation: 135deg;"></div>
+                            <div class="small-petal" style="--rotation: 180deg;"></div>
+                            <div class="small-petal" style="--rotation: 225deg;"></div>
+                            <div class="small-petal" style="--rotation: 270deg;"></div>
+                            <div class="small-petal" style="--rotation: 315deg;"></div>
+                        </div>
+                        <div class="small-center"></div>
+                    </div>
+                    
+                    <div class="small-sunflower small-flower-2">
+                        <div class="small-petals-layer">
+                            <div class="small-petal" style="--rotation: 0deg;"></div>
+                            <div class="small-petal" style="--rotation: 45deg;"></div>
+                            <div class="small-petal" style="--rotation: 90deg;"></div>
+                            <div class="small-petal" style="--rotation: 135deg;"></div>
+                            <div class="small-petal" style="--rotation: 180deg;"></div>
+                            <div class="small-petal" style="--rotation: 225deg;"></div>
+                            <div class="small-petal" style="--rotation: 270deg;"></div>
+                            <div class="small-petal" style="--rotation: 315deg;"></div>
+                        </div>
+                        <div class="small-center"></div>
+                    </div>
+                    
+                    <div class="small-sunflower small-flower-3">
+                        <div class="small-petals-layer">
+                            <div class="small-petal" style="--rotation: 0deg;"></div>
+                            <div class="small-petal" style="--rotation: 45deg;"></div>
+                            <div class="small-petal" style="--rotation: 90deg;"></div>
+                            <div class="small-petal" style="--rotation: 135deg;"></div>
+                            <div class="small-petal" style="--rotation: 180deg;"></div>
+                            <div class="small-petal" style="--rotation: 225deg;"></div>
+                            <div class="small-petal" style="--rotation: 270deg;"></div>
+                            <div class="small-petal" style="--rotation: 315deg;"></div>
+                        </div>
+                        <div class="small-center"></div>
+                    </div>
+                </div>
+                
+                <div class="signature">
+                    <p>Con cariño,</p>
+                    <h3 class="sender-name" id="displaySenderName">Tu Persona Especial</h3>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pétalos flotantes -->
+        <div class="floating-petals" id="floatingPetals"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

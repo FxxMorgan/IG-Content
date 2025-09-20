@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Plantilla Flores Amarillas</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #FFF9C4, #FFECB3);
+            min-height: 100vh;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #FFD700;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .demo-card {
+            background: white;
+            border: 2px solid #FFD700;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(255, 193, 7, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .demo-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .demo-preview {
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .preview-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .preview-message {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .preview-flowers {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0.5rem 0;
+            height: 40px;
+        }
+        
+        .mini-css-flower {
+            width: 30px;
+            height: 30px;
+            position: relative;
+            margin: 0 5px;
+            animation: gentleFloat 4s ease-in-out infinite;
+        }
+        
+        .mini-petals {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: slowSpin 15s linear infinite;
+        }
+        
+        .mini-petal {
+            position: absolute;
+            width: 8px;
+            height: 16px;
+            background: var(--primary-color);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform-origin: 50% 90%;
+            top: 50%;
+            left: 50%;
+            margin: -8px 0 0 -4px;
+            opacity: 0.9;
+        }
+        
+        .mini-petal:nth-child(1) { transform: rotate(0deg) translateY(-7px); }
+        .mini-petal:nth-child(2) { transform: rotate(60deg) translateY(-7px); }
+        .mini-petal:nth-child(3) { transform: rotate(120deg) translateY(-7px); }
+        .mini-petal:nth-child(4) { transform: rotate(180deg) translateY(-7px); }
+        .mini-petal:nth-child(5) { transform: rotate(240deg) translateY(-7px); }
+        .mini-petal:nth-child(6) { transform: rotate(300deg) translateY(-7px); }
+        
+        .mini-flower-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            transform: translate(-50%, -50%);
+            background: #8B4513;
+            border-radius: 50%;
+            z-index: 5;
+        }
+        
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+        
+        @keyframes slowSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .theme-classic {
+            --primary-color: #FFD700;
+            --bg-start: #FFF9C4;
+            --bg-end: #FFECB3;
+        }
+        
+        .theme-sunset {
+            --primary-color: #FF8F00;
+            --bg-start: #FFF3E0;
+            --bg-end: #FFE0B2;
+        }
+        
+        .theme-golden {
+            --primary-color: #B8860B;
+            --bg-start: #FFFBF0;
+            --bg-end: #FFF8DC;
+        }
+        
+        .theme-spring {
+            --primary-color: #CDDC39;
+            --bg-start: #F9FBE7;
+            --bg-end: #F0F4C3;
+        }
+        
+        .demo-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .instructions {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .instructions h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .instructions ol {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 8px;
+        }
+        
+        .feature-emoji {
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .demo-container {
+                padding: 1rem;
+                margin: 10px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="demo-container">
+        <h1>🌻 Plantilla Flores Amarillas - Demo</h1>
+        
+        <div class="instructions">
+            <h2>🚀 Cómo usar la plantilla:</h2>
+            <ol>
+                <li><strong>Abre</strong> el archivo <code>index.html</code> en tu navegador</li>
+                <li><strong>Haz clic</strong> en "✏️ Personalizar" para abrir el editor</li>
+                <li><strong>Completa</strong> los campos con tus datos personalizados</li>
+                <li><strong>Selecciona</strong> tu tema favorito y ajusta las flores</li>
+                <li><strong>Descarga</strong> tu versión personalizada</li>
+            </ol>
+        </div>
+
+        <h2>🎨 Temas Disponibles</h2>
+        <div class="demo-grid">
+            <!-- Tema Clásico -->
+            <div class="demo-card">
+                <h3>🌻 Amarillo Clásico</h3>
+                <div class="demo-preview theme-classic">
+                    <div class="preview-name">María</div>
+                    <div class="preview-message">¡Feliz Día de las Flores Amarillas!</div>
+                    <div class="preview-flowers">
+                        <div class="mini-css-flower">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                        <div class="mini-css-flower" style="animation-delay: -1s;">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                        <div class="mini-css-flower" style="animation-delay: -2s;">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                    </div>
+                </div>
+                <p><strong>Perfecto para:</strong> Mensajes tradicionales de amistad</p>
+                <p><strong>Ambiente:</strong> Alegre y clásico</p>
+            </div>
+
+            <!-- Tema Atardecer -->
+            <div class="demo-card">
+                <h3>🌅 Atardecer</h3>
+                <div class="demo-preview theme-sunset">
+                    <div class="preview-name">Ana</div>
+                    <div class="preview-message">Eres como el sol en mi vida</div>
+                    <div class="preview-flowers">
+                        <div class="mini-css-flower">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                        <div class="mini-css-flower" style="animation-delay: -1s;">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                        <div class="mini-css-flower" style="animation-delay: -2s;">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                    </div>
+                </div>
+                <p><strong>Perfecto para:</strong> Mensajes románticos y cálidos</p>
+                <p><strong>Ambiente:</strong> Romántico y acogedor</p>
+            </div>
+
+            <!-- Tema Dorado -->
+            <div class="demo-card">
+                <h3>👑 Dorado Real</h3>
+                <div class="demo-preview theme-golden">
+                    <div class="preview-name">Carmen</div>
+                    <div class="preview-message">Eres oro puro en mi corazón</div>
+                    <div class="preview-flowers">
+                        <div class="mini-css-flower">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                        <div class="mini-css-flower" style="animation-delay: -1s;">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                        <div class="mini-css-flower" style="animation-delay: -2s;">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                    </div>
+                </div>
+                <p><strong>Perfecto para:</strong> Ocasiones muy especiales</p>
+                <p><strong>Ambiente:</strong> Elegante y sofisticado</p>
+            </div>
+
+            <!-- Tema Primavera -->
+            <div class="demo-card">
+                <h3>🌱 Primavera</h3>
+                <div class="demo-preview theme-spring">
+                    <div class="preview-name">Laura</div>
+                    <div class="preview-message">Renuevas mi mundo cada día</div>
+                    <div class="preview-flowers">
+                        <div class="mini-css-flower">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                        <div class="mini-css-flower" style="animation-delay: -1s;">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                        <div class="mini-css-flower" style="animation-delay: -2s;">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                    </div>
+                </div>
+                <p><strong>Perfecto para:</strong> Nuevos comienzos y esperanza</p>
+                <p><strong>Ambiente:</strong> Fresco y natural</p>
+            </div>
+        </div>
+
+        <h2>✨ Características Principales</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <span class="feature-emoji">📱</span>
+                <span>100% Responsive</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-emoji">🎨</span>
+                <span>4 Temas de Color</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-emoji">✏️</span>
+                <span>Totalmente Personalizable</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-emoji">🌻</span>
+                <span>Flores Animadas</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-emoji">💾</span>
+                <span>Auto-guardado</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-emoji">📥</span>
+                <span>Exportación HTML/CSS</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-emoji">⌨️</span>
+                <span>Atajos de Teclado</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-emoji">👆</span>
+                <span>Gestos Touch</span>
+            </div>
+        </div>
+
+        <h2>📖 Ejemplos de Uso</h2>
+        
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h3>💑 Para tu Pareja</h3>
+                <div class="demo-preview theme-sunset">
+                    <div class="preview-name">Mi Amor</div>
+                    <div class="preview-message">Eres la flor más hermosa de mi jardín</div>
+                    <div class="preview-flowers">
+                        <div class="mini-css-flower">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                        ❤️
+                        <div class="mini-css-flower" style="animation-delay: -1s;">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                    </div>
+                </div>
+                <p><em>"Cada día contigo es como el Día de las Flores Amarillas"</em></p>
+            </div>
+
+            <div class="demo-card">
+                <h3>👭 Para tu Mejor Amiga</h3>
+                <div class="demo-preview theme-classic">
+                    <div class="preview-name">Amiga del Alma</div>
+                    <div class="preview-message">Gracias por iluminar mis días</div>
+                    <div class="preview-flowers">
+                        <div class="mini-css-flower">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                        💛
+                        <div class="mini-css-flower" style="animation-delay: -1s;">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                    </div>
+                </div>
+                <p><em>"Una amistad como la nuestra florece eternamente"</em></p>
+            </div>
+
+            <div class="demo-card">
+                <h3>👵 Para Mamá/Abuela</h3>
+                <div class="demo-preview theme-golden">
+                    <div class="preview-name">Mamá Querida</div>
+                    <div class="preview-message">Tu amor es el sol que me hace crecer</div>
+                    <div class="preview-flowers">
+                        <div class="mini-css-flower">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                        🌸
+                        <div class="mini-css-flower" style="animation-delay: -1s;">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                    </div>
+                </div>
+                <p><em>"El amor de madre es como una flor que nunca se marchita"</em></p>
+            </div>
+
+            <div class="demo-card">
+                <h3>🎓 Para Alguien Especial</h3>
+                <div class="demo-preview theme-spring">
+                    <div class="preview-name">Persona Increíble</div>
+                    <div class="preview-message">Que tus sueños florezcan siempre</div>
+                    <div class="preview-flowers">
+                        <div class="mini-css-flower">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                        ✨
+                        <div class="mini-css-flower" style="animation-delay: -1s;">
+                            <div class="mini-petals">
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                                <div class="mini-petal"></div>
+                            </div>
+                            <div class="mini-flower-center"></div>
+                        </div>
+                    </div>
+                </div>
+                <p><em>"Cada nuevo día es una oportunidad para florecer"</em></p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="index.html" class="demo-btn theme-classic" style="font-size: 1.2rem; padding: 15px 30px;">
+                🌻 ¡Empezar a Personalizar!
+            </a>
+        </div>
+
+        <div class="instructions">
+            <h2>💡 Tips y Consejos</h2>
+            <ul style="color: #666; line-height: 1.8;">
+                <li><strong>Nombres cortos:</strong> Funcionan mejor visualmente</li>
+                <li><strong>Mensajes personales:</strong> Añade recuerdos o bromas internas</li>
+                <li><strong>Elige el tema correcto:</strong> Clásico para amistad, Atardecer para romance</li>
+                <li><strong>Ajusta las flores:</strong> Menos flores para móviles, más para desktop</li>
+                <li><strong>Guarda tu configuración:</strong> Se auto-guarda cada 5 segundos</li>
+                <li><strong>Comparte fácilmente:</strong> Descarga y sube a tu servidor favorito</li>
+            </ul>
+        </div>
+
+        <footer style="text-align: center; color: #666; margin-top: 3rem; border-top: 1px solid #eee; padding-top: 2rem;">
+            <p>🌻 <strong>Feliz Día de las Flores Amarillas</strong> 🌻</p>
+            <p>Plantilla creada con 💛 para celebrar la amistad y el amor</p>
+            <p style="font-size: 0.9rem;">21 de Septiembre - Día Internacional de las Flores Amarillas</p>
+        </footer>
+    </div>
+</body>
+</html>

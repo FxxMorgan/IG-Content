@@ -1,0 +1,252 @@
+// Función para generar HTML personalizado con el girasol CSS
+function generateCustomHTML(config, cssFileName) {
+    return `<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ${config.recipientName} - Flores Amarillas</title>
+    <link rel="stylesheet" href="${cssFileName}">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body data-theme="${config.colorTheme}">
+    <div class="container">
+        <div class="flowers-background" id="flowersBackground"></div>
+        
+        <div class="main-content">
+            <div class="greeting">
+                <h1 class="recipient-name">${config.recipientName}</h1>
+                <div class="date-badge">21 de Septiembre</div>
+            </div>
+            
+            <div class="message-container">
+                <h2 class="main-message">${config.mainMessage}</h2>
+                <p class="secondary-message">${config.secondMessage}</p>
+                
+                <div class="sunflower-container">
+                    <div class="sunflower">
+                        <!-- Pétalos externos -->
+                        <div class="petals-layer outer-petals">
+                            <div class="petal petal-1"></div>
+                            <div class="petal petal-2"></div>
+                            <div class="petal petal-3"></div>
+                            <div class="petal petal-4"></div>
+                            <div class="petal petal-5"></div>
+                            <div class="petal petal-6"></div>
+                            <div class="petal petal-7"></div>
+                            <div class="petal petal-8"></div>
+                            <div class="petal petal-9"></div>
+                            <div class="petal petal-10"></div>
+                            <div class="petal petal-11"></div>
+                            <div class="petal petal-12"></div>
+                            <div class="petal petal-13"></div>
+                            <div class="petal petal-14"></div>
+                            <div class="petal petal-15"></div>
+                            <div class="petal petal-16"></div>
+                            <div class="petal petal-17"></div>
+                            <div class="petal petal-18"></div>
+                            <div class="petal petal-19"></div>
+                            <div class="petal petal-20"></div>
+                        </div>
+                        
+                        <!-- Pétalos internos -->
+                        <div class="petals-layer inner-petals">
+                            <div class="petal petal-1"></div>
+                            <div class="petal petal-2"></div>
+                            <div class="petal petal-3"></div>
+                            <div class="petal petal-4"></div>
+                            <div class="petal petal-5"></div>
+                            <div class="petal petal-6"></div>
+                            <div class="petal petal-7"></div>
+                            <div class="petal petal-8"></div>
+                            <div class="petal petal-9"></div>
+                            <div class="petal petal-10"></div>
+                            <div class="petal petal-11"></div>
+                            <div class="petal petal-12"></div>
+                            <div class="petal petal-13"></div>
+                            <div class="petal petal-14"></div>
+                            <div class="petal petal-15"></div>
+                            <div class="petal petal-16"></div>
+                        </div>
+                        
+                        <!-- Centro de la flor -->
+                        <div class="center">
+                            <div class="seeds-pattern">
+                                <div class="seed-ring ring-1">
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                </div>
+                                <div class="seed-ring ring-2">
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                </div>
+                                <div class="seed-ring ring-3">
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                    <div class="seed"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Flores pequeñas decorativas -->
+                    <div class="small-sunflower small-flower-1">
+                        <div class="small-petals-layer">
+                            <div class="small-petal" style="--rotation: 0deg;"></div>
+                            <div class="small-petal" style="--rotation: 45deg;"></div>
+                            <div class="small-petal" style="--rotation: 90deg;"></div>
+                            <div class="small-petal" style="--rotation: 135deg;"></div>
+                            <div class="small-petal" style="--rotation: 180deg;"></div>
+                            <div class="small-petal" style="--rotation: 225deg;"></div>
+                            <div class="small-petal" style="--rotation: 270deg;"></div>
+                            <div class="small-petal" style="--rotation: 315deg;"></div>
+                        </div>
+                        <div class="small-center"></div>
+                    </div>
+                    
+                    <div class="small-sunflower small-flower-2">
+                        <div class="small-petals-layer">
+                            <div class="small-petal" style="--rotation: 0deg;"></div>
+                            <div class="small-petal" style="--rotation: 45deg;"></div>
+                            <div class="small-petal" style="--rotation: 90deg;"></div>
+                            <div class="small-petal" style="--rotation: 135deg;"></div>
+                            <div class="small-petal" style="--rotation: 180deg;"></div>
+                            <div class="small-petal" style="--rotation: 225deg;"></div>
+                            <div class="small-petal" style="--rotation: 270deg;"></div>
+                            <div class="small-petal" style="--rotation: 315deg;"></div>
+                        </div>
+                        <div class="small-center"></div>
+                    </div>
+                    
+                    <div class="small-sunflower small-flower-3">
+                        <div class="small-petals-layer">
+                            <div class="small-petal" style="--rotation: 0deg;"></div>
+                            <div class="small-petal" style="--rotation: 45deg;"></div>
+                            <div class="small-petal" style="--rotation: 90deg;"></div>
+                            <div class="small-petal" style="--rotation: 135deg;"></div>
+                            <div class="small-petal" style="--rotation: 180deg;"></div>
+                            <div class="small-petal" style="--rotation: 225deg;"></div>
+                            <div class="small-petal" style="--rotation: 270deg;"></div>
+                            <div class="small-petal" style="--rotation: 315deg;"></div>
+                        </div>
+                        <div class="small-center"></div>
+                    </div>
+                </div>
+                
+                <div class="signature">
+                    <p>Con cariño,</p>
+                    <h3 class="sender-name">${config.senderName}</h3>
+                </div>
+            </div>
+        </div>
+        
+        <div class="floating-petals" id="floatingPetals"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            createBackgroundFlowers(${config.flowerCount});
+            createFloatingPetals(${Math.floor(config.flowerCount / 3)});
+            startSparkleEffect();
+        });
+
+        function createBackgroundFlowers(count) {
+            const flowersContainer = document.getElementById('flowersBackground');
+            const flowerEmojis = ['🌻', '🌼', '🌸', '🌺', '🏵️', '🌷'];
+            
+            for (let i = 0; i < count; i++) {
+                const flower = document.createElement('div');
+                flower.className = 'background-flower';
+                flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+                
+                flower.style.left = Math.random() * 100 + '%';
+                flower.style.top = Math.random() * 100 + '%';
+                flower.style.animationDelay = Math.random() * 6 + 's';
+                flower.style.animationDuration = (4 + Math.random() * 4) + 's';
+                
+                const scale = 0.5 + Math.random() * 1;
+                flower.style.transform = 'scale(' + scale + ')';
+                flower.style.opacity = 0.2 + Math.random() * 0.3;
+                
+                flowersContainer.appendChild(flower);
+            }
+        }
+
+        function createFloatingPetals(count) {
+            const petalsContainer = document.getElementById('floatingPetals');
+            const petalEmojis = ['🌼', '🌸', '🍃', '✨'];
+            
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    petal.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+                    
+                    petal.style.left = Math.random() * 100 + '%';
+                    petal.style.top = '-50px';
+                    
+                    const duration = 8 + Math.random() * 4;
+                    petal.style.animationDuration = duration + 's';
+                    
+                    petalsContainer.appendChild(petal);
+                    
+                    setTimeout(() => {
+                        if (petal.parentNode) {
+                            petal.parentNode.removeChild(petal);
+                        }
+                    }, duration * 1000);
+                }, i * 200);
+            }
+        }
+        
+        function startSparkleEffect() {
+            setInterval(() => {
+                const container = document.querySelector('.container');
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                
+                container.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    if (sparkle.parentNode) {
+                        sparkle.parentNode.removeChild(sparkle);
+                    }
+                }, 2000);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>`;
+}

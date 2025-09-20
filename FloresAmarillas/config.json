@@ -1,0 +1,156 @@
+{
+  "version": "1.0.0",
+  "name": "Plantilla Flores Amarillas",
+  "description": "Plantilla personalizable para el Día de las Flores Amarillas",
+  "author": "Tu Nombre",
+  "created": "2025-09-20",
+  "settings": {
+    "defaultValues": {
+      "recipientName": "Querida Persona Especial",
+      "senderName": "Tu Persona Especial", 
+      "mainMessage": "¡Feliz Día de las Flores Amarillas! 🌻",
+      "secondMessage": "Que este día especial traiga a tu vida la misma alegría y calidez que estas hermosas flores amarillas representan.",
+      "colorTheme": "classic",
+      "flowerCount": 50
+    },
+    "themes": {
+      "classic": {
+        "name": "Amarillo Clásico",
+        "description": "Colores tradicionales amarillo dorado",
+        "colors": {
+          "primary": "#FFD700",
+          "secondary": "#FFF700", 
+          "accent": "#FFEB3B",
+          "backgroundStart": "#FFF9C4",
+          "backgroundEnd": "#FFECB3"
+        }
+      },
+      "sunset": {
+        "name": "Atardecer",
+        "description": "Tonos cálidos de atardecer",
+        "colors": {
+          "primary": "#FF8F00",
+          "secondary": "#FFA000",
+          "accent": "#FFB300", 
+          "backgroundStart": "#FFF3E0",
+          "backgroundEnd": "#FFE0B2"
+        }
+      },
+      "golden": {
+        "name": "Dorado Real",
+        "description": "Elegantes tonos dorados",
+        "colors": {
+          "primary": "#B8860B",
+          "secondary": "#DAA520",
+          "accent": "#FFD700",
+          "backgroundStart": "#FFFBF0",
+          "backgroundEnd": "#FFF8DC"
+        }
+      },
+      "spring": {
+        "name": "Primavera",
+        "description": "Frescos amarillos verdosos",
+        "colors": {
+          "primary": "#CDDC39",
+          "secondary": "#D4E157", 
+          "accent": "#FFEB3B",
+          "backgroundStart": "#F9FBE7",
+          "backgroundEnd": "#F0F4C3"
+        }
+      }
+    },
+    "animations": {
+      "flowerFloat": {
+        "duration": "6s",
+        "timingFunction": "ease-in-out", 
+        "iterationCount": "infinite"
+      },
+      "petalFall": {
+        "duration": "8-12s",
+        "timingFunction": "linear",
+        "iterationCount": "infinite"
+      },
+      "sparkle": {
+        "duration": "2s",
+        "timingFunction": "ease-in-out",
+        "iterationCount": "infinite"
+      }
+    },
+    "flowers": {
+      "backgroundEmojis": ["🌻", "🌼", "🌸", "🌺", "🏵️", "🌷"],
+      "petalEmojis": ["🌼", "🌸", "🍃", "✨"],
+      "bouquetEmojis": ["🌻", "🌼"],
+      "minCount": 20,
+      "maxCount": 100,
+      "defaultCount": 50
+    },
+    "responsive": {
+      "breakpoints": {
+        "mobile": "480px",
+        "tablet": "768px", 
+        "desktop": "1024px"
+      },
+      "fontScaling": {
+        "mobile": "clamp(1.5rem, 4vw, 2.5rem)",
+        "tablet": "clamp(2rem, 4vw, 3rem)",
+        "desktop": "clamp(2.5rem, 5vw, 4rem)"
+      }
+    },
+    "features": {
+      "autoSave": true,
+      "localStorageKey": "floresAmarillasConfig", 
+      "exportFormats": ["html", "css"],
+      "touchGestures": true,
+      "keyboardShortcuts": true,
+      "darkModeSupport": true,
+      "printOptimization": true
+    }
+  },
+  "customization": {
+    "allowedFields": [
+      "recipientName",
+      "senderName", 
+      "mainMessage",
+      "secondMessage",
+      "colorTheme",
+      "flowerCount"
+    ],
+    "validation": {
+      "recipientName": {
+        "maxLength": 50,
+        "required": false
+      },
+      "senderName": {
+        "maxLength": 50, 
+        "required": false
+      },
+      "mainMessage": {
+        "maxLength": 100,
+        "required": false
+      },
+      "secondMessage": {
+        "maxLength": 300,
+        "required": false
+      }
+    }
+  },
+  "performance": {
+    "maxFlowers": 100,
+    "maxPetals": 30,
+    "animationOptimization": true,
+    "lazyLoading": false,
+    "prefersReducedMotion": true
+  },
+  "seo": {
+    "title": "Flores Amarillas - Día Especial para {recipientName}",
+    "description": "Una hermosa dedicatoria personalizada para el Día de las Flores Amarillas con animaciones y efectos especiales",
+    "keywords": ["flores amarillas", "21 septiembre", "amistad", "dedicatoria", "personalizable"],
+    "ogImage": "og-flowers.jpg",
+    "twitterCard": "summary_large_image"
+  },
+  "social": {
+    "shareText": "🌻 ¡Mira esta hermosa dedicatoria de Flores Amarillas! 🌻",
+    "hashtags": ["FloresAmarillas", "21DeSeptiembre", "Amistad", "DiaDeLasFloresAmarillas"],
+    "platforms": ["facebook", "twitter", "whatsapp", "telegram"]
+  }
+}
